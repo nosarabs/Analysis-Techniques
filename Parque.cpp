@@ -1,5 +1,5 @@
 #include "Parque.h"
-
+using namespace std;
 Parque::Parque() {
 
 }
@@ -8,7 +8,7 @@ Parque::~Parque() {
 
 }
 
-std::vector<int> Parque::busquedaExhaustiva(const int** espera, int m, int n, const int* disfrute, const int** traslado) {
+vector<int> Parque::busquedaExhaustiva(const int** espera, int m, int n, const int* disfrute, const int** traslado) {
   vector<int> sigma((d.m)/2, 0);
   int Ts = 0;
   int Te = 0;
@@ -16,34 +16,34 @@ std::vector<int> Parque::busquedaExhaustiva(const int** espera, int m, int n, co
 
 }
 
-std::vector<int> Parque::programacionDinamica(const int** espera, int m, int n, const int* disfrute, const int** traslado) {
+vector<int> Parque::programacionDinamica(const int** espera, int m, int n, const int* disfrute, const int** traslado) {
 
 }
 
-std::vector<int> Parque::algoritmoAvido(const int** espera, int m, int n, const int* disfrute, const int** traslado) {
+vector<int> Parque::algoritmoAvido(const int** espera, int m, int n, const int* disfrute, const int** traslado) {
 
 }
 
-std::vector<int> fase(const int** espera, int m, int n, const int* disfrute, const int** traslado, int suma, int nvisitados, sigma, int i, int j) {
+vector<int> Parque::fase(const int** espera, int m, int n, const int* disfrute, const int** traslado, int suma, int nvisitados, vector<int> sigma, int i, int j) {
 
-  if (suma > Ts) {
-    return sigma;
-  }
-  if (i == 0) {
+    if (suma > Ts) {
+      return sigma;
+    }
+    if (i == 0) {
       suma = Te + d.traslado[0][sigma[i]];
-  }
-  sigma[i] = j;
-  int contador = 1;
-  while (contador == j) {
-    ++contador;
-  }
-  j = contador;
+    }
+    sigma[i] = j;
+    int contador = 1;
+    while (contador == j) {
+        ++contador;
+    }
+    j = contador;
 
-  suma = d.espera[suma][sigma[i]-1] + d.disfrute[sigma[i]-1] + d.traslado[sigma[i]][j];
+    suma = d.espera[suma][sigma[i]-1] + d.disfrute[sigma[i]-1] + d.traslado[sigma[i]][j];
 
-  if (suma + d.traslado[sigma[i]][8] <= Ts) {
-    ++nvisitas;
-    fase(const int** espera, int m, int n, const int* disfrute, const int** traslado, int suma, int nvisitados, sigma, int i+1, int j); // Hay que actualizar los parametros
-    suma = suma + d.traslado[sigma[i]-1][8];
-  }
+    if (suma + d.traslado[sigma[i]][8] <= Ts) {
+        ++nvisitados;
+        fase(espera, m, n, disfrute, traslado, suma, nvisitados, sigma, i+1, j);
+        suma = suma + d.traslado[sigma[i]-1][8];
+    }
 }

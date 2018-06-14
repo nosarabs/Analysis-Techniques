@@ -16,7 +16,7 @@ class Parque {
     vector<int> algoritmoAvido(const int** espera, int m, int n, const int* disfrute, const int** traslado);
 
   private:
-    vector<int> fase(const int** espera, int m, int n, const int* disfrute, const int** traslado, int suma, int nvisitados, sigma<int>, int i, int j);
+    vector<int> fase(const int** espera, int m, int n, const int* disfrute, const int** traslado, int suma, int nvisitados, vector<int> sigma, int i, int j);
     Datos d;
     int Te;
     int Ts;
